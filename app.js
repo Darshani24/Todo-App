@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </li>
         `).join("");
 
-        // Add event listeners for delete buttons
+       
         document.querySelectorAll(".delete-button").forEach(btn =>
             btn.addEventListener("click", (e) => {
                 todos.splice(e.target.closest("button").dataset.index, 1);
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         );
 
-        // Add event listeners for checkbox state changes
+       
         document.querySelectorAll('.checkbox-input').forEach(checkbox =>
             checkbox.addEventListener("change", (e) => {
                 todos[e.target.dataset.index].completed = e.target.checked;
@@ -42,27 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         );
 
-        // Adding the custom checkbox appearance and functionality
         document.querySelectorAll('.checkbox-input').forEach(checkbox => {
             const customCheckbox = checkbox.nextElementSibling.querySelector('.custom-checkbox');
             
             if (checkbox.checked) {
-                customCheckbox.style.backgroundColor = "greenyellow"; // Checkbox checked state
-                customCheckbox.innerHTML = "<span>&#10003;</span>"; // Checkmark
+                customCheckbox.style.backgroundColor = "greenyellow"; 
+                customCheckbox.innerHTML = "<span>&#10003;</span>"; 
             }
 
-            // Handle checkbox click events to toggle checked state
+          
             customCheckbox.addEventListener("click", () => {
                 checkbox.checked = !checkbox.checked;
                 customCheckbox.style.backgroundColor = checkbox.checked ? "greenyellow" : "white";
-                customCheckbox.innerHTML = checkbox.checked ? "<span>&#10003;</span>" : ""; // Checkmark toggle
+                customCheckbox.innerHTML = checkbox.checked ? "<span>&#10003;</span>" : ""; 
                 todos[checkbox.dataset.index].completed = checkbox.checked;
                 saveAndRender();
             });
         });
     };
 
-    // Adding a new todo item
+   
     todoForm.addEventListener("submit", (e) => {
         e.preventDefault();
         if (todoInput.value.trim()) {

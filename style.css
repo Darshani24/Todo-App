@@ -1,4 +1,4 @@
-/* Reset & Global Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 
 html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16pt;
+    font-size: 16px;
     color: black;
 }
 
@@ -17,21 +17,24 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    background: url("https://plus.unsplash.com/premium_photo-1683309568772-57011d6c1b7b?fm=jpg&q=60&w=3000") no-repeat center/cover;
+    background: url("https://plus.unsplash.com/premium_photo-1683309568772-57011d6c1b7b?fm=jpg&q=60&w=3000") 
+    no-repeat center/cover;
 }
 
-/* Header */
+
 h1 {
+    position: sticky;
     margin: 50px 0 25px;
     font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
     color: #DA1F60;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.8), 
+                 6px 6px 10px rgba(243, 236, 236, 0.6), 
+                 9px 9px 15px rgba(109, 107, 107, 0.4);
 }
 
-/* Wrapper */
 .wrapper {
     max-width: 700px;
     width: 100%;
@@ -45,29 +48,40 @@ h1 {
     backdrop-filter: blur(5px);
 }
 
-/* Form */
 form {
     display: flex;
     gap: 10px;
 }
+.title{
+    text-shadow: 12px -24px 20px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
 
 #todo-input {
-    flex-grow: 1;
-    padding: 12px 20px;
+    width: 100%;
+    padding: 12px 50px 12px 20px; 
     border: 2px solid #FD9CC2;
-    border-radius: 25px;
-    background: #FD9CC2;
+    border-radius: 55px;
+    background: #fae1eb;
     color: black;
     caret-color: white;
     outline: none;
+    font-size: 16px;
 }
 
-/* Add Button */
 #add-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
     background: #DA1F60;
     border: none;
-    width: 50px;
-    padding: 12px;
+    width: 40px;
+    height: 40px;
     font-size: 20px;
     color: white;
     font-weight: 600;
@@ -77,20 +91,18 @@ form {
     align-items: center;
     justify-content: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 #add-button:hover {
     background: #b81a50;
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
 }
 
-/* Task List */
 ul {
     list-style: none;
 }
 
-/* Todo Item */
 .todo {
     background: #fff5e1;
     display: flex;
@@ -107,14 +119,17 @@ ul {
     padding: 10px;
 }
 
-/* Delete Button */
 .delete-button {
     background: red;
     border: none;
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
-    transition: 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+}
+
+.delete-button:hover {
+    background: darkred;
 }
 
 .delete-button svg {
@@ -123,7 +138,6 @@ ul {
     height: 20px;
 }
 
-/* Checkbox */
 input[type="checkbox"] {
     display: none;
 }
@@ -138,8 +152,7 @@ input[type="checkbox"] {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
-
+    transition: background 0.2s ease-in-out;
 }
 
 input[type="checkbox"]:checked + .custom-checkbox {
@@ -147,7 +160,7 @@ input[type="checkbox"]:checked + .custom-checkbox {
 }
 
 input[type="checkbox"]:checked + .custom-checkbox::before {
-    content: "\2713"; /* Checkmark */
+    content: "\2713"; 
     color: white;
     font-size: 14px;
     font-weight: bold;
@@ -157,8 +170,6 @@ input[type="checkbox"]:checked + .todo-text {
     text-decoration: line-through;
     color: grey;
 }
-
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -175,4 +186,62 @@ input[type="checkbox"]:checked + .todo-text {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #C21850;
+}
+@media screen and (max-width: 1024px) { /* Tablets */
+    h1 {
+        font-size: 2.5rem;
+        padding: 10px;
+    }
+
+    .wrapper {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    #todo-input {
+        font-size: 14px;
+        padding: 10px 45px 10px 15px;
+    }
+
+    #add-button {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) { /* Mobile Phones */
+    h1 {
+        font-size: 2rem;
+        padding: 8px;
+        margin: 10px 0;
+    }
+
+    .wrapper {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    #todo-input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #add-button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .todo {
+        padding: 8px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .todo-text {
+        width: 100%;
+        padding: 5px;
+    }
 }
